@@ -23,3 +23,4 @@ VALUES ("El", "Chapo", 1, NULL),
        ("Benjamin", "Arellano", 6, 5),
        ("Pablo", "Acosta", 7, NULL),
        ("Ramon", "Arellano", 8, 7);
+    --    I was watching narcos prior to this^
