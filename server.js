@@ -1,6 +1,9 @@
+// Requirers
 const express = require('express');
-// Import and require mysql2
 const mysql = require('mysql2');
+const inquirer = require('inquirer');
+const cTable = require('console.table');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,13 +16,11 @@ app.use(express.json());
 const db = mysql.createConnection(
   {
     host: 'localhost',
-    // MySQL username,
-    user: 'root',
-    // TODO: Add MySQL password here
-    password: '753951',
-    database: 'movies_db'
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
   },
-  console.log(`Connected to the movies_db database.`)
+  console.log(`Connected to the employee_db database.`)
 );
 
 // Create a movie
