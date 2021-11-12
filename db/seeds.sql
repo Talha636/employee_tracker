@@ -1,26 +1,25 @@
 INSERT INTO department (name)
-VALUES ("Web Development"),
-       ("Human Resouces"),
+VALUES ("Sales"),
+       ("Engineering"),
        ("Finance"),
-       ("Sales");
+       ("Legal");
 
 INSERT INTO role (title, salary, department_id)
-VALUES ("Front End Developer", 80000, 1),
-       ("Back End Developer", 100000, 1),
-       ("Resource Manager", 75000, 2),
-       ("Hiring Manager", 70000, 2),
-       ("Accountant", 90000, 3),
-       ("Analyst", 95000, 3),
-       ("Sales Rep", 60000, 4),
-       ("Sales Manager", 85000, 4);
+VALUES ("Sales Lead", 100000, 1),
+       ("Salesperson", 80000, 1),
+       ("Lead Engineer", 150000, 2),
+       ("Software Engineer", 120000, 2),
+       ("Account Manager", 160000, 3),
+       ("Accountant", 125000, 3),
+       ("Legal Team Lead", 250000, 4),
+       ("Lawyer", 190000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("El", "Chapo", 1, 2),
-       ("El", "Mayo", 2, NULL),
-       ("El", "Azul", 3, NULL),
-       ("Amado", "Carrillo", 4, 3),
-       ("Pacho", "Herrera", 5, 6),
-       ("Benjamin", "Arellano", 6, NULL),
-       ("Ramon", "Arellano", 7, 8),
-       ("Pablo", "Acosta", 8, NULL);
-    --    I was watching narcos prior to this^^
+VALUES ("El", "Chapo", 1, NULL),
+       ("El", "Mayo", 2, 1),
+       ("Amado", "Carrillo", 3, NULL),
+       ("El", "Azul", 4, 3),
+       ("Pacho", "Herrera", 5, NULL),
+       ("Benjamin", "Arellano", 6, 5),
+       ("Pablo", "Acosta", 7, NULL),
+       ("Ramon", "Arellano", 8, 7);
