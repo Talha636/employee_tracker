@@ -15,12 +15,11 @@ VALUES ("Sales Lead", 100000, 1),
        ("Lawyer", 190000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("El", "Chapo", 1, NULL),
-       ("El", "Mayo", 2, 1),
-       ("Amado", "Carrillo", 3, NULL),
-       ("El", "Azul", 4, 3),
-       ("Pacho", "Herrera", 5, NULL),
-       ("Benjamin", "Arellano", 6, 5),
-       ("Pablo", "Acosta", 7, NULL),
-       ("Ramon", "Arellano", 8, 7);
-    --    I was watching narcos prior to this^
+VALUES ("John", "Doe", 1, NULL),
+       ("Mike", "Chan", 2, 1),
+       ("Ashley", "Rodriguez", 3, NULL),
+       ("Kevin", "Tupic", 4, 3),
+       ("Kunal", "Singh", 5, NULL),
+       ("Malia", "Brown", 6, 5),
+       ("Sarah", "Lourd", 7, NULL),
+       ("Tom", "Allen", 8, 7);
