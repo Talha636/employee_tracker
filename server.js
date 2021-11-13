@@ -2,9 +2,10 @@
 const express = require('express');
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
+const Connection = require('mysql2/typings/mysql/lib/Connection');
 require('dotenv').config();
 
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Express middleware
@@ -22,6 +23,36 @@ const db = mysql.createConnection(
   console.log(`Connected to the employee_db database.`)
 );
 
+// Functions
+function viewEmployees() {
+
+}
+
+function addEmployee() {
+
+}
+
+function updateEmployeeRole() {
+
+}
+
+function viewRoles() {
+
+}
+
+function addRole() {
+
+}
+
+function viewDepartments() {
+
+}
+
+function addDepartment() {
+
+}
+
+// Inquirer prompt with function calls
 const inquirerPrompt = () => {
   inquirer.prompt([
     {
@@ -42,10 +73,47 @@ const inquirerPrompt = () => {
   ])
   .then((answers) => {
     const { task } = answers;
+    if (task === 'View All Employees') {
+      viewEmployees();
+    } else if (task === 'Add Employee') {
+      addEmployee();
+    } else if (task === 'Update Employee Role') {
+      updateEmployeeRole();
+    } else if (task === 'View All Roles') {
+      viewRoles();
+    } else if (task === 'Add Role') {
+      addRole();
+    } else if (task === 'View all Departments') {
+      viewDepartments();
+    } else if (task === 'Add Department') {
+      addDepartment();
+    } else {
+      
+    }
   })
 }
 
+const appArt = () => {
+  console.log('███████╗███╗░░░███╗██████╗░██╗░░░░░░█████╗░██╗░░░██╗███████╗███████╗')
+  console.log('██╔════╝████╗░████║██╔══██╗██║░░░░░██╔══██╗╚██╗░██╔╝██╔════╝██╔════╝')
+  console.log('█████╗░░██╔████╔██║██████╔╝██║░░░░░██║░░██║░╚████╔╝░█████╗░░█████╗░░')
+  console.log('██╔══╝░░██║╚██╔╝██║██╔═══╝░██║░░░░░██║░░██║░░╚██╔╝░░██╔══╝░░██╔══╝░░')
+  console.log('███████╗██║░╚═╝░██║██║░░░░░███████╗╚█████╔╝░░░██║░░░███████╗███████╗')
+  console.log('╚══════╝╚═╝░░░░░╚═╝╚═╝░░░░░╚══════╝░╚════╝░░░░╚═╝░░░╚══════╝╚══════╝')
+  console.log('')
+  console.log('   ███╗░░░███╗░█████╗░███╗░░██╗░█████╗░░██████╗░███████╗██████╗░')
+  console.log('   ████╗░████║██╔══██╗████╗░██║██╔══██╗██╔════╝░██╔════╝██╔══██╗')
+  console.log('   ██╔████╔██║███████║██╔██╗██║███████║██║░░██╗░█████╗░░██████╔╝')
+  console.log('   ██║╚██╔╝██║██╔══██║██║╚████║██╔══██║██║░░╚██╗██╔══╝░░██╔══██╗')
+  console.log('   ██║░╚═╝░██║██║░░██║██║░╚███║██║░░██║╚██████╔╝███████╗██║░░██║')
+  console.log('   ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝░╚═════╝░╚══════╝╚═╝░░╚═╝')
+}
+
+
+// Calls function on applicating launch
+appArt();
 inquirerPrompt();
+
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
@@ -53,5 +121,6 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
+  console.log('');
   console.log(`Server running on port ${PORT}`);
 });
