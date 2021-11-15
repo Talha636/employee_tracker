@@ -2,7 +2,6 @@
 const express = require('express');
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
-const Connection = require('mysql2/typings/mysql/lib/Connection');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3001;
@@ -25,31 +24,56 @@ const db = mysql.createConnection(
 
 // Functions
 function viewEmployees() {
-
+  db.query('SELECT * FROM employee_db.employee;', function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.table(result);
+      inquirerPrompt();
+    }
+  })
 }
 
 function addEmployee() {
-
+  console.log('brr');
+  inquirerPrompt();
 }
 
 function updateEmployeeRole() {
-
+  console.log('brr');
+  inquirerPrompt();
 }
 
 function viewRoles() {
-
+  db.query('SELECT * FROM role ORDER BY role.id', function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.table(result);
+      inquirerPrompt();
+    }
+  })
 }
 
 function addRole() {
-
+  console.log('brr');
+  inquirerPrompt();
 }
 
 function viewDepartments() {
-
+  db.query('SELECT * FROM department ORDER BY department.id' ,function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.table(result);
+      inquirerPrompt();
+    }
+  })
 }
 
 function addDepartment() {
-
+  console.log('brr');
+  inquirerPrompt();
 }
 
 // Inquirer prompt with function calls
@@ -88,7 +112,7 @@ const inquirerPrompt = () => {
     } else if (task === 'Add Department') {
       addDepartment();
     } else {
-      
+      return;
     }
   })
 }
