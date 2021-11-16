@@ -35,13 +35,60 @@ function viewEmployees() {
 }
 
 function addEmployee() {
-  console.log('brr');
-  inquirerPrompt();
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'firstName',
+      message: 'Enter the NEW employee first name.'
+    },
+    {
+      type: 'input',
+      name: 'lastName',
+      message: "Enter the NEW employee's last name."
+    },
+    {
+      type: 'input',
+      name: 'roleId',
+      message: 'Enter the role ID for this employee.'
+    },
+    {
+      type: 'input',
+      name: 'managerId',
+      message: "Enter the employees MANAGER'S ID."
+    }]).then((answer) => {
+      db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('${answer.firstName}', '${answer.lastName}', '${answer.roleId}', '${answer.managerId}')`);
+      viewEmployees();
+    }).catch((err) => {
+      if(err) {
+        console.log(err);
+      } else {
+        inquirerPrompt();
+      }
+    })
 }
 
 function updateEmployeeRole() {
-  console.log('brr');
-  inquirerPrompt();
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'emp',
+      message: "Enter the employee's ID whose role you would like to change."
+    },
+    {
+      type: 'input',
+      name: 'newRole',
+      message: "Enter the employees new role ID."
+    }
+  ]).then((answer) => {
+    db.query(`UPDATE employee SET role_id=${answer.newRole} WHERE id = ${answer.emp}`);
+    viewEmployees();
+  }).catch((err) => {
+    if(err) {
+      console.log(err);
+    } else {
+      inquirerPrompt();
+    }
+  })
 }
 
 function viewRoles() {
@@ -56,8 +103,31 @@ function viewRoles() {
 }
 
 function addRole() {
-  console.log('brr');
-  inquirerPrompt();
+  inquirer.prompt([
+  {
+    type: 'input',
+    name: 'new_role',
+    message: 'Enter the NEW job title.'
+  },
+  {
+    type: 'input',
+    name: 'salary',
+    message: 'Enter the salary for this position.'
+  },
+  {
+    type: 'input',
+    name: 'departmentId',
+    message: 'Enter the department ID for this role.'
+  }]).then((answer) => {
+    db.query(`INSERT INTO role (title, salary, department_id) VALUES ('${answer.new_role}', '${answer.salary}', '${answer.departmentId}')`);
+    viewRoles();
+  }).catch((err) => {
+    if(err) {
+      console.log(err);
+    } else {
+      inquirerPrompt();
+    }
+  })
 }
 
 function viewDepartments() {
@@ -72,8 +142,20 @@ function viewDepartments() {
 }
 
 function addDepartment() {
-  console.log('brr');
-  inquirerPrompt();
+  inquirer.prompt([{
+    type: 'input',
+    name: 'new_department',
+    message: 'What would you like to name the NEW department?'
+  }]).then((answer) => {
+    db.query(`INSERT INTO department (name) VALUES ('${answer.new_department}')`);
+    viewDepartments();
+  }).catch((err) => {
+    if(err) {
+      console.log(err);
+    } else {
+      inquirerPrompt();
+    }
+  })
 }
 
 // Inquirer prompt with function calls
