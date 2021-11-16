@@ -194,7 +194,7 @@ const inquirerPrompt = () => {
     } else if (task === 'Add Department') {
       addDepartment();
     } else {
-      return;
+      process.exit();
     }
   })
 }
@@ -219,7 +219,6 @@ const appArt = () => {
 // Calls function on applicating launch
 appArt();
 inquirerPrompt();
-
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
